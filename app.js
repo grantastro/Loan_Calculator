@@ -11,10 +11,10 @@ document.getElementById("loan-form").addEventListener("submit", function(e) {
   e.preventDefault();
 });
 
-//Calculate results
+// Calculate Results
 function calculateResults() {
   console.log("Calculating...");
-  //UI variables
+  // UI Vars
   const amount = document.getElementById("amount");
   const interest = document.getElementById("interest");
   const years = document.getElementById("years");
@@ -22,20 +22,20 @@ function calculateResults() {
   const totalPayment = document.getElementById("total-payment");
   const totalInterest = document.getElementById("total-interest");
 
-  const principle = parseFloat(amount.value);
+  const principal = parseFloat(amount.value);
   const calculatedInterest = parseFloat(interest.value) / 100 / 12;
   const calculatedPayments = parseFloat(years.value) * 12;
 
-  //Compute monthly payments
+  // Compute monthly payment
   const x = Math.pow(1 + calculatedInterest, calculatedPayments);
-  const monthly = (principle * x * calculatedInterest) / (x - 1);
+  const monthly = (principal * x * calculatedInterest) / (x - 1);
 
   if (isFinite(monthly)) {
     monthlyPayment.value = monthly.toFixed(2);
     totalPayment.value = (monthly * calculatedPayments).toFixed(2);
-    totalInterest.value = (monthly * calculatedPayments - principle).toFixed(2);
+    totalInterest.value = (monthly * calculatedPayments - principal).toFixed(2);
 
-    // Show Results
+    // Show results
     document.getElementById("results").style.display = "block";
 
     // Hide loader
@@ -45,29 +45,35 @@ function calculateResults() {
   }
 }
 
-//Show error
+// Show Error
 function showError(error) {
-  // Show Results
+  // Hide results
   document.getElementById("results").style.display = "none";
 
   // Hide loader
   document.getElementById("loading").style.display = "none";
 
-  //Create div
+  // Create a div
   const errorDiv = document.createElement("div");
-  //Get elements
+
+  // Get elements
   const card = document.querySelector(".card");
   const heading = document.querySelector(".heading");
-  //Add class
+
+  // Add class
   errorDiv.className = "alert alert-danger";
-  //Add text and append to div
+
+  // Create text node and append to div
   errorDiv.appendChild(document.createTextNode(error));
-  //Insert error before heading
+
+  // Insert error above heading
   card.insertBefore(errorDiv, heading);
-  //clear error
+
+  // Clear error after 3 seconds
   setTimeout(clearError, 3000);
 }
 
+// Clear error
 function clearError() {
   document.querySelector(".alert").remove();
 }

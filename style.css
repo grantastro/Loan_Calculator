@@ -1,25 +1,10 @@
-.card-body {
-  background: #62c2cc;
-}
-
-.bg-teal {
-  background: #62c2cc;
-  color: #fff !important;
-}
-
-.btn-orange {
-  background: #fdb813;
-  color: #fff;
-  margin-top: 1rem;
-}
-
-.btn-orange:hover {
-  background: #f68b1f !important;
-  color: #fff !important;
+#loading,
+#results {
+  display: none;
 }
 
 #loading {
-  display: inline-block;
+  display: none;
   position: relative;
   margin: auto;
   width: 64px;
@@ -57,4 +42,22 @@
 
 input[type="number"]:focus {
   background: #ffffe0;
+}
+
+h1,
+h5 {
+  color: #fff;
+}
+
+.card {
+  background: #62c2cc !important;
+}
+
+.btn-orange {
+  background: #fdb813 !important;
+  color: #fff !important;
+}
+
+.btn-orange:hover {
+  background: #f68b1f !important;
 }
